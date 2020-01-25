@@ -23,6 +23,9 @@ module.exports = {
     devServer: {
         port: 3200
     },
+    resolve: {
+        extensions: ['.js','.jsx']
+    },
     devtool: dev ? 'source-map' : '',//исходные карты
     plugins: [
         new HTMLWebpackPlugin({

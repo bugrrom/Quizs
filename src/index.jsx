@@ -1,7 +1,11 @@
 import './style/index.css'
 import React from 'react'
 import {render} from 'react-dom'
+import App from "./components/App/App";
 
-render(<div>Hey hey</div>,document.getElementById('root'));
+
+
+
+render(<App/>,document.getElementById('root'));
 
 
