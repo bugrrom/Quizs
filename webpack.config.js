@@ -9,7 +9,7 @@ const dev = true;
 
 module.exports = {
     mode: 'development',
-    entry: ['@babel/polyfill', './src/index.jsx'],
+    entry: './src/index.js',
     output: {
         filename: 'bundle.[hash].js',
         path: path.resolve(__dirname, 'dist')
@@ -42,8 +42,16 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
+                test: /\.(css)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(png|gif|svg|jpg|jpeg)$/,
@@ -56,29 +64,12 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            '@babel/preset-env'
-                        ]
+                use: [
+                    {
+                        loader: 'babel-loader'
                     }
-                },
-                 'eslint-loader'
                 ]
             },
-            {
-                test: /\.jsx$/,
-                exclude: /node_modules/,
-                loader: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            '@babel/preset-react'
-                        ]
-                    }
-                }
-            }
         ]
     }
 }
