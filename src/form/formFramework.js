@@ -26,6 +26,7 @@ export function validateForm(formControls) {
     let isFormValid = true;
 
     for (let control in formControls) {
+        // eslint-disable-next-line no-prototype-builtins
         if (formControls.hasOwnProperty(control)) {
             isFormValid = formControls[control].valid && isFormValid
         }
